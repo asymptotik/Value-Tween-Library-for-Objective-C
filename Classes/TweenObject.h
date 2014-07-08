@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class Tween;
+@class TweenObject;
+
+typedef double (*TweenEasingFunction)(double t, double b, double c, double d);
+typedef void (^TweenBlock)(Tween *, TweenObject *tweenObject);
+
 @interface TweenObject : NSObject
 
 @property (nonatomic, assign) BOOL started;
@@ -19,11 +25,12 @@
 @property (nonatomic, assign) double time;
 @property (nonatomic, assign) double delay;
 @property (nonatomic, retain) NSString *easing;
-@property (nonatomic, retain) id selStart;
-@property (nonatomic, retain) id selUpdate;
-@property (nonatomic, retain) id selEnd;
+@property (nonatomic, copy) TweenBlock startBlock;
+@property (nonatomic, copy) TweenBlock updateBlock;
+@property (nonatomic, copy) TweenBlock endBlock;
 @property (nonatomic, assign) double startTime;
 @property (nonatomic, assign) double currentValue;
 @property (nonatomic, retain) NSMutableDictionary * param;
+@property (nonatomic, assign) TweenEasingFunction easingFunction;
 
 @end

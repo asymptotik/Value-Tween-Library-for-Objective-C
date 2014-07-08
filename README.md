@@ -1,4 +1,9 @@
-Value Tween Library for Objective-C
+Value Tween Library for Objective-C adopted from
+Nobuhiro Takahashi
+
+Performance improvements
+Updated to be object methods rather than class methods.
+
 =======
 
 1. link "QuartzCore.framework".
@@ -15,46 +20,48 @@ Example Usage
 #import "Tween.h"
 #import "TweenObject.h"
 
+// Somewhere
+Tween *tween = [[Tween alloc] init];
+
 - (IBAction)buttonWasTapped:(id)sender
 {
-    [Tween addTween:self
+    [tween addTween:self
             tweenId:0
          startValue:10
            endValue:290
                time:2
               delay:0
              easing:@"easeNone"
-           startSEL:nil
-          updateSEL:@selector(update:)
-             endSEL:@selector(end:)];
+           start:nil
+          update:^(Tween *tween, TweenObject *tweenObject) { self.view.frame  = CGRectMake(tween.currentValue,  5,20,20); }
+             end:^(Tween *tween, TweenObject *tweenObject) {  self.view.frame  = CGRectMake(tween.currentValue,  5,20,20); }];
 }
 
-- (void)update:(TweenObject *)tween
-{
-    self.view.frame  = CGRectMake(tween.currentValue,  5,20,20);
-}
-- (void)end:(TweenObject *)tween
-{
-    self.view.frame  = CGRectMake(tween.currentValue,  5,20,20);
-}
 ```
 
 remove Tween
 
 ```
-[Tween addTween:self tweenId:0 ...
+[tween addTween:self tweenId:0 ...
 // Remove Tween By tweenId
-[Tween removeTweenForId:0];
+[tween removeTweenForId:0];
 
-TweenObject *tweenObject = [Tween addTween:self tweenId:1 ...
+TweenObject *tweenObject = [tween addTween:self tweenId:1 ...
 // Remove Tween by TweenObject
-[Tween removeTweenForObject:tweenObject];
+[tween removeTweenForObject:tweenObject];
 ```
 
 
 Licensed
 =============
 
+Copyright (c) 2014 Asymptotik Limited
+
+Licensed under the MIT License
+
+
+Original License
+=============
 Licensed under the MIT License
 
 Copyright (c) 2012 Nobuhiro Takahashi

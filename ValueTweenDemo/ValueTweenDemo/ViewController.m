@@ -30,26 +30,28 @@
 
 - (IBAction)buttonWasTapped:(id)sender
 {
-    [Tween addTween:self tweenId:0  startValue:10 endValue:290 time:2 delay:0 easing:@"easeNone" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:1  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInQuad" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:2  startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutQuad" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:3  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInOutQuad" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:4  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInCubic" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:5  startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutCubic" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:6  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInOutCubic" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:7  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInQuart" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:8  startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutQuart" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:9  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInOutQuart" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:10 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInQuint" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:11 startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutQuint" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:12 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInOutQuint" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:13 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInBounce" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:14 startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutBounce" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:15 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInElastic" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:16 startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutElastic" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:17 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInBounce" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:18 startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutBounce" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
-    [Tween addTween:self tweenId:19 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInOutBounce" startSEL:nil updateSEL:@selector(update:) endSEL:@selector(end:)];
+    Tween *tween = [[Tween alloc] init];
+    
+    [tween addTween:self tweenId:0  startValue:10 endValue:290 time:2 delay:0 easing:@"easeNone" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:1  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInQuad" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:2  startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutQuad" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:3  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInOutQuad" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:4  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInCubic" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:5  startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutCubic" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:6  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInOutCubic" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:7  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInQuart" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:8  startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutQuart" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:9  startValue:10 endValue:290 time:2 delay:0 easing:@"easeInOutQuart" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:10 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInQuint" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:11 startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutQuint" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:12 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInOutQuint" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:13 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInBounce" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:14 startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutBounce" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:15 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInElastic" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:16 startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutElastic" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:17 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInBounce" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:18 startValue:10 endValue:290 time:2 delay:0 easing:@"easeOutBounce" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
+    [tween addTween:self tweenId:19 startValue:10 endValue:290 time:2 delay:0 easing:@"easeInOutBounce" start:nil update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; } end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
     
     // add test
     CGSize size = CGSizeMake(100, 100);
@@ -63,7 +65,7 @@
     view.transform = transform;    
     [self.view addSubview:view];
     
-    [Tween addTween:self
+    [tween addTween:self
             tweenId:20
          startValue:0
            endValue:1
@@ -71,9 +73,9 @@
               delay:0
              easing:@"easeOutBounce"
               param:[@{ @"view":view } mutableCopy]
-           startSEL:nil
-          updateSEL:@selector(update:)
-             endSEL:@selector(end:)];
+           start:nil
+          update:^(Tween *tween, TweenObject *tweenObject) { [self update:tweenObject]; }
+             end:^(Tween *tween, TweenObject *tweenObject) { [self end:tweenObject]; }];
 }
 
 - (void)update:(TweenObject *)tween

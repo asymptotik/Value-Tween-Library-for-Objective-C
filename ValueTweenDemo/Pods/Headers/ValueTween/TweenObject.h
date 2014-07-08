@@ -1,1 +1,1 @@
-../../../../Classes/osx/TweenObject.h
+../../../../Classes/TweenObject.h
